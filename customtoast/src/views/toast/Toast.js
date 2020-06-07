@@ -30,7 +30,7 @@ function Toast({
   raised,
   ...otherProps
 }) {
-  const [tempMessage, setTempMessage] = useState(null);
+  const [tempMessage, setTempMessage] = useState(message);
   const [timer, setTimer] = useState(message);
 
   const { text } = message || {};
