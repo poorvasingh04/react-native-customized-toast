@@ -5,7 +5,7 @@ import {
   View,
   ScrollView,
 } from 'react-native';
-import { Toast, Position, Theme } from '../src/views';
+import { Toast, Position, Theme } from 'react-native-customized-toast';
 import styles from './styles';
 
 const {
@@ -112,7 +112,15 @@ function ToastView(){
         position={toastPosition}
         theme={toastTheme}
       >  
-      {showChild && <Text style>Test toast with children</Text>}
+      {showChild && (
+        <TouchableHighlight
+          style={[buttonStyle, { padding: 5 }]}
+          onPress={() => {
+          setMessage(null);
+        }}>
+          <Text>Hide Toast</Text>
+        </TouchableHighlight>
+      )}
       </Toast>     
     </View>
   );

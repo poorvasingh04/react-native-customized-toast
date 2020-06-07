@@ -1,9 +1,14 @@
-/**
- * @format
- */
+import { 
+  Toast,
+  Theme,
+  Position,
+} from './src/views';
 
-import {AppRegistry} from 'react-native';
-import App from './App';
-import {name as appName} from './app.json';
+import FontSize from './src/resources/FontSize';
 
-AppRegistry.registerComponent(appName, () => App);
+export {
+  Toast,
+  Theme,
+  Position,
+  FontSize as ToastFont,
+};

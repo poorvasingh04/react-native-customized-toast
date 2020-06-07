@@ -1,5 +1,5 @@
 {
-  "name": "customtoast",
+  "name": "react-native-customized-toast",
   "version": "1.0.0",
   "description": "A react-native framework to render similar customized toast in iOS and Android.",
   "main": "index.js",
@@ -22,7 +22,6 @@
     "url": "https://github.com/poorvasingh04/react-native-customized-toast/issues"
    },
   "homepage":"https://github.com/poorvasingh04/react-native-customized-toast#readme",
-  "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",

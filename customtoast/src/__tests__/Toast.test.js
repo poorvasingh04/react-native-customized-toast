@@ -1,6 +1,6 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import { TouchableHighlight } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Toast } from '../views';
 
 describe('Toast unit tests------', () => {
@@ -32,12 +32,12 @@ describe('Toast unit tests------', () => {
 
   it('should hide toast', () => {
     let component = shallow(<Toast />);
-    expect(component.find('TouchableHighlight').length).toBe(0);
+    expect(component.find(TouchableOpacity).length).toBe(0);
   });
 
   it('should show toast', () => {
     expect(props.message).toEqual({ text: 'Test toast' });
-    expect(wrapper.find(TouchableHighlight).length).toBe(1);
+    expect(wrapper.find(TouchableOpacity).length).toBe(1);
   });
 
   it('should update toast message', () => {
@@ -49,9 +49,9 @@ describe('Toast unit tests------', () => {
   });
 
   it('should hide toast on tap', () => {
-    const button = wrapper.find(TouchableHighlight);
+    const button = wrapper.find(TouchableOpacity);
     button.props().onPress();
-    expect(wrapper.find(TouchableHighlight).length).toBe(0);
+    expect(wrapper.find(TouchableOpacity).length).toBe(0);
   });
 
 });

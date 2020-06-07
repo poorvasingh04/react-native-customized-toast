@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   View,
-  TouchableHighlight,
+  TouchableOpacity,
   Text,
 } from 'react-native';
 import {
@@ -22,12 +22,13 @@ function Toast({
   messageColor,
   messageStyle,
   messageFontSize,
-  expireTime,
+  duration,
   backgroundColor,
   containerStyle,
   borderStyle,
   position,
   raised,
+  hideOnPress,
   ...otherProps
 }) {
   const [tempMessage, setTempMessage] = useState(message);
@@ -43,9 +44,10 @@ function Toast({
       }
       setTempMessage(message);
 
+      if (duration === 0) return;
       const timer = setTimeout(() => {
         hideToast();
-      }, expireTime);
+      }, duration);
       
       setTimer(timer);
     };
@@ -58,6 +60,7 @@ function Toast({
   }, [message]);
 
   const hideToast = () => {
+    if (!hideOnPress) return;
     clearTimeout(timer);
     setTempMessage(null);
   }
@@ -82,10 +85,12 @@ function Toast({
   }
 
   const toastView = () => {
+    const activeOpacity = hideOnPress ? 0.2 : 1;
     return (
-      <TouchableHighlight
+      <TouchableOpacity
         style={styleForContainer()}
         onPress={hideToast}
+        activeOpacity={activeOpacity}
         {...otherProps}
       >
         <View>
@@ -96,7 +101,7 @@ function Toast({
           </Text>
           {children}
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 
@@ -116,7 +121,7 @@ export default Toast;
 Toast.propTypes = {
   theme: PropTypes.string,
   message: PropTypes.instanceOf(Object),
-  expireTime: PropTypes.number,
+  duration: PropTypes.number,
   position: PropTypes.string,
   raised: PropTypes.bool,
   children: PropTypes.node,
@@ -126,12 +131,13 @@ Toast.propTypes = {
   backgroundColor: PropTypes.string,
   containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   borderStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  hideOnPress: PropTypes.bool,
 };
 
 Toast.defaultProps = {
   theme: Theme.LIGHT,
   message: null,
-  expireTime: AppConstants.TOAST_EXPIRE_TIME,
+  duration: AppConstants.TOAST_DURATION,
   position: Position.TOP,
   raised: true,
   children: null,
@@ -141,4 +147,5 @@ Toast.defaultProps = {
   backgroundColor: null,
   containerStyle: null,
   borderStyle: null,
+  hideOnPress: true
 };

@@ -1,14 +1,15 @@
 import React from 'react';
 import {
-  View, StatusBar, Text,
+  View, StatusBar,
 } from 'react-native';
+import ToastView from './src/ToastView';
 
 function App(){
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1 }}>
     <StatusBar barStyle="dark-content" />
-      <Text> This is a React native framework</Text>    
+      <ToastView />    
     </View>
   );
 };

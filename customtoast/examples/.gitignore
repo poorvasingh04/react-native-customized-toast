@@ -57,15 +57,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-# Unit tests
-coverage
-
-# Logs
-*.log
-
-# Runtime data
-tmp
-
-# Examples
-examples
