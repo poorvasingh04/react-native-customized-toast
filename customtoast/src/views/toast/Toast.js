@@ -31,7 +31,7 @@ function Toast({
   ...otherProps
 }) {
   const [tempMessage, setTempMessage] = useState(message);
-  const [timer, setTimer] = useState(message);
+  const [timer, setTimer] = useState(null);
 
   const { text } = message || {};
 
@@ -44,7 +44,7 @@ function Toast({
       setTempMessage(message);
 
       const timer = setTimeout(() => {
-        setTempMessage(null);
+        hideToast();
       }, expireTime);
       
       setTimer(timer);
@@ -53,10 +53,12 @@ function Toast({
   
     return () => {
       cancel = true;
+      clearTimeout(timer);
     }
   }, [message]);
 
   const hideToast = () => {
+    clearTimeout(timer);
     setTempMessage(null);
   }
 
@@ -100,7 +102,6 @@ function Toast({
 
   const toast = () => {
     if(!tempMessage) {
-      clearTimeout(timer);
       return null;
     }
 
