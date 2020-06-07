@@ -66,4 +66,6 @@ coverage
 
 # Runtime data
 tmp
-dist
+
+# Examples (If applicable to your project)
+examples
