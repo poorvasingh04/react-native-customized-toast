@@ -37,11 +37,13 @@ function Toast({
   const { text } = message || {};
 
   useEffect(() => {
+     
     let cancel = false;
     const runEffect = async () => {      
       if (cancel) {
         return;
       }
+
       setTempMessage(message);
 
       if (duration === 0) return;
@@ -60,7 +62,6 @@ function Toast({
   }, [message]);
 
   const hideToast = () => {
-    if (!hideOnPress) return;
     clearTimeout(timer);
     setTempMessage(null);
   }
@@ -89,7 +90,9 @@ function Toast({
     return (
       <TouchableOpacity
         style={styleForContainer()}
-        onPress={hideToast}
+        onPress={() => {
+          if (hideOnPress) hideToast();
+        }}
         activeOpacity={activeOpacity}
         {...otherProps}
       >

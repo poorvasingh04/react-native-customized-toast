@@ -2,6 +2,9 @@
 
 A react-native framework to render customized toast in both iOS and Android with common behaviour.
 
+### Installing
+
+npm install react-native-customized-toast
 
 
 **Example: **
@@ -34,8 +37,8 @@ function ToastView(){
       </TouchableHighlight>
       <Toast
         message={message}
-        position={toastPosition}
-        theme={toastTheme}
+        position={Position.TOP}
+        theme={Theme.LIGHT}
       >  
       <TouchableHighlight
         onPress={hideToast}
@@ -51,10 +54,33 @@ export default ToastView;
 
 
 ```
+### Interfaces
 
-### Installing
+Name | Type 
+--- | --- 
+Theme | LIGHT & DARK
+Position | TOP, CENTER & BOTTOM
+ToastFont | SMALL, MEDIUM, LARGE & XLARGE
+Message   | { text : string }
 
-npm install react-native-customized-toast
+
+### API
+
+Props | Type | Default | Required 
+--- | --- | ---  | ---
+theme | Theme | Theme.LIGHT | false
+message | Message | null | false 
+children | ReactNode - Any React component  | null | false 
+messageColor | String | defaults to red | false 
+messageStyle | TextStyle | defaults to font size 16 and color red | false  
+messageFontSize | Number | 16 | false 
+duration | Number | 5000 | false 
+backgroundColor | String | Black for DARK theme and white for LIGHT theme | false
+containerStyle | ViewStyle | container with border and corner radius | false 
+borderStyle | ViewStyle | border width - 1 and radius 10 | false 
+position | Position | Position.TOP | false 
+raised | boolean | true | false 
+hideOnPress | boolean | true | false 
 
 
 ## Contributing
@@ -64,4 +90,8 @@ Any sort of issues is welcome. Please share the screenshot of the bug. If there 
 Pull requests are also appreciated. If you want to change the API, feel free to connect and discuss first.
 
 
+## License
 
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
