@@ -6,8 +6,10 @@ A react-native framework to render customized toast in both iOS and Android with
 
 npm install react-native-customized-toast
 
+### Example
 
-**Example: **
+![Toast Example Video](https://github.com/poorvasingh04/react-native-customized-toast/blob/master/customtoast/examples/toast_example.gif)
+
 ```
 import React, { useState } from 'react';
 import {
